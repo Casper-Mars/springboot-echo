@@ -30,6 +30,6 @@ jobs:
         run: mvn package
 
       - name: docker-build
-        run: |
-        docker build -t registry.cn-hangzhou.aliyuncs.com/casper/test:2.0 .
-        docker push registry.cn-hangzhou.aliyuncs.com/casper/test:2.0
+        run: docker build -t registry.cn-hangzhou.aliyuncs.com/casper/test:2.0 .
+      - name: docker-push
+        run: docker push registry.cn-hangzhou.aliyuncs.com/casper/test:2.0
