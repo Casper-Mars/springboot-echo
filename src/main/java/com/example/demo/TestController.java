@@ -9,7 +9,7 @@ public class TestController {
 
     @GetMapping("/echo")
     public String echo(String target) {
-        return target+"this is 2.0";
+        return target+"this is 2.1";
     }
 
 

@@ -21,18 +21,17 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@master
-
       # Runs a single command using the runners shell
       - name: maven-clean
         run: mvn clean
-
       - name: maven-package
         run: mvn package
-
-
       - name: docker-build
-        run: docker build -t registry.cn-hangzhou.aliyuncs.com/casper/test:2.0 .
+        run: docker build -t registry.cn-hangzhou.aliyuncs.com/casper/test:2.1 .
       - name: docker-login
-        run: docker login --username=郭小英英英 --password=Abcd123456 registry.cn-hangzhou.aliyuncs.com
+        env:
+          USERNAME: ${{ secrets.aliyun_docker_username }}
+          PASSWORD: ${{ secrets.aliyun_docker_password }}
+        run: docker login --username=$USERNAME --password=$PASSWORD registry.cn-hangzhou.aliyuncs.com
       - name: docker-push
-        run: docker push registry.cn-hangzhou.aliyuncs.com/casper/test:2.0
+        run: docker push registry.cn-hangzhou.aliyuncs.com/casper/test:2.1
