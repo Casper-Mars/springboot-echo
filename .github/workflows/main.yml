@@ -29,7 +29,10 @@ jobs:
       - name: maven-package
         run: mvn package
 
+
       - name: docker-build
         run: docker build -t registry.cn-hangzhou.aliyuncs.com/casper/test:2.0 .
+      - name: docker-login
+        run: docker login --username=郭小英英英 --password=Abcd123456 registry.cn-hangzhou.aliyuncs.com
       - name: docker-push
         run: docker push registry.cn-hangzhou.aliyuncs.com/casper/test:2.0
